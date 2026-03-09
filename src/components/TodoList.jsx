@@ -64,7 +64,19 @@ function TodoList({ todos, toggleTodo, addTodo, handleDeleteTodo }) {
           <div onClick={handleToggleDelete} style={{ cursor: "pointer" }}>
             <Icon path={mdiDeleteCircle} size={1.5} />
           </div>
-          <div onClick={addTodoHandler} style={{ cursor: "pointer" }}>
+          <div
+            onClick={addTodoHandler}
+            style={{
+              height: 40,
+              width: 40,
+              backgroundColor: "#232042",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: 8,
+              cursor: "pointer",
+            }}
+          >
             <PlusCircleIcon size={32} />
           </div>
         </div>
