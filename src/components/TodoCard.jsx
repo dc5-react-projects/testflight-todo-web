@@ -11,47 +11,9 @@ function TodoCard({
   handleDeleteTodo,
 }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        // borderStyle: "solid",
-        // borderWidth: "2px",
-        // borderColor: "white",
-        borderRadius: "16px",
-
-        height: "56px",
-        padding: "12px  24px",
-        marginBottom: "12px",
-        backgroundColor: "#1c263b",
-
-        // background: "white",
-        // borderRadius: 12,
-        // padding: 16,
-        boxShadow: "0 4px 10px rgba(0,0,0,0.12)",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: "18px",
-        }}
-      >
-        <div
-          onClick={() => toggleTodo(todo.id)}
-          style={{
-            height: 40,
-            width: 40,
-            backgroundColor: "#232042",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: 8,
-            cursor: "pointer",
-          }}
-        >
+    <div className="todo-card-container">
+      <div className="todo-card">
+        <div className="todo-card-icon" onClick={() => toggleTodo(todo.id)}>
           {todo.isDone ? (
             <CheckCircle
               size={32}
@@ -64,36 +26,13 @@ function TodoCard({
         <p>{todo.title}</p>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "12px",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "12px",
-          }}
-        >
+      <div className="todo-icon-container">
+        <div className="todo-icon-wrapper" s>
           {toggleEdit && (
             <div
+              className="todo-card-icon"
               onClick={() => {
                 console.log("Edit Todo");
-              }}
-              style={{
-                height: 40,
-                width: 40,
-                backgroundColor: "#232042",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 8,
-                cursor: "pointer",
               }}
             >
               <Icon path={mdiCircleEditOutline} size={1} />
@@ -103,18 +42,8 @@ function TodoCard({
             <div
               onClick={() => {
                 handleDeleteTodo(todo.id);
-                console.log("Delete Todo");
               }}
-              style={{
-                height: 40,
-                width: 40,
-                backgroundColor: "#232042",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 8,
-                cursor: "pointer",
-              }}
+              className="todo-card-icon"
             >
               <XCircle
                 size={32}

@@ -3,13 +3,10 @@ import TodoCard from "./TodoCard";
 import Icon from "@mdi/react";
 import { mdiDeleteCircle } from "@mdi/js";
 import { mdiPlaylistEdit } from "@mdi/js";
-import { PlusCircleIcon } from "@phosphor-icons/react";
-function TodoList({ todos, toggleTodo, addTodo, handleDeleteTodo }) {
+
+function TodoList({ todos, toggleTodo, handleDeleteTodo }) {
   const [toggleDelete, setToggleDelete] = useState(false);
   const [toggleEdit, setToggleEdit] = useState(false);
-  function addTodoHandler() {
-    addTodo();
-  }
 
   function handleToggleDelete() {
     setToggleDelete((prev) => !prev);
@@ -19,83 +16,23 @@ function TodoList({ todos, toggleTodo, addTodo, handleDeleteTodo }) {
   }
 
   return (
-    <div
-      style={{
-        width: "100%",
-        // height: "70vh",
-        padding: "16px",
-
-        // borderStyle: "solid",
-        // borderWidth: "2px",
-        // borderColor: "white",
-        // borderRadius: "16px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "20px",
-
-          //   borderStyle: "solid",
-          //   borderWidth: "2px",
-          //   borderColor: "white",
-          //   borderRadius: "16px",
-        }}
-      >
-        <h2>ToDo</h2>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div onClick={handleToggleEdit} style={{ cursor: "pointer" }}>
-            <Icon
-              path={mdiPlaylistEdit}
-              size={1.5}
-              style={{ marginRight: "12px" }}
-            />
+    <div className="todo-container">
+      <div className="todo-list">
+        <h2 className="todo-title">ToDo</h2>
+        <div className="todo-button-wrapper">
+          <div className="todo-button-icon" onClick={handleToggleEdit}>
+            <Icon path={mdiPlaylistEdit} size={1.3} />
           </div>
-          <div onClick={handleToggleDelete} style={{ cursor: "pointer" }}>
-            <Icon path={mdiDeleteCircle} size={1.5} />
-          </div>
-          <div
-            onClick={addTodoHandler}
-            style={{
-              height: 40,
-              width: 40,
-              backgroundColor: "#232042",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: 8,
-              cursor: "pointer",
-            }}
-          >
-            <PlusCircleIcon size={32} />
+          <div className="todo-button-icon" onClick={handleToggleDelete}>
+            <Icon path={mdiDeleteCircle} size={1.3} />
           </div>
         </div>
       </div>
-      <div
-        style={
-          {
-            //   borderStyle: "solid",
-            //   borderWidth: "2px",
-            //   borderColor: "white",
-            //   borderRadius: "16px",
-          }
-        }
-      >
+      <div>
         {todos.map((todo) => (
           <TodoCard
             key={todo.id}
             todo={todo}
-            // isDone={isDone}
             toggleTodo={toggleTodo}
             toggleDelete={toggleDelete}
             toggleEdit={toggleEdit}

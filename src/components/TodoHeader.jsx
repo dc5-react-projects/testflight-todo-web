@@ -1,6 +1,7 @@
 import React from "react";
+import TodoInput from "./TodoInput";
 
-function TodoHeader({ todos }) {
+function TodoHeader({ todos, addTodo }) {
   const today = new Date();
   const day = today.toLocaleDateString("en-US", { weekday: "long" });
   const date = today.toLocaleDateString("en-US", {
@@ -11,50 +12,19 @@ function TodoHeader({ todos }) {
 
   const totalCount = todos.length;
   const CompletedCount = todos.filter((todo) => todo.isDone).length;
-  //   console.log(day);
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-
-        // borderStyle: "solid",
-        // borderWidth: "2px",
-        // borderColor: "white",
-        // borderRadius: "16px",
-
-        // width: "100%",
-        // backgroundColor: "green",
-        // color: "white",
-
-        padding: "16px 26px",
-      }}
-    >
-      <div>
-        <p>{date}</p>
-        <h2>{day}</h2>
+    <div>
+      <div className="header-container">
+        <div className="header-date-day-wrapper">
+          <p className="header-date">{date}</p>
+          <h2 className="header-day">{day}</h2>
+        </div>
+        <div className="header-progress">
+          <span className="progress-stats">{`${CompletedCount} / ${totalCount}`}</span>
+        </div>
       </div>
-      <div
-        style={{
-          width: "52px",
-          height: "52px",
-          display: "flex",
-
-          alignItems: "center",
-          justifyContent: "center",
-          borderStyle: "solid",
-          borderWidth: "4px",
-          borderColor: "#1c263b",
-          borderRadius: "50px",
-          padding: "12px",
-        }}
-      >
-        <span
-          style={{ display: "block", fontSize: "22px" }}
-        >{`${CompletedCount} / ${totalCount}`}</span>
-      </div>
+      <TodoInput addTodo={addTodo} />
     </div>
   );
 }
