@@ -1,7 +1,6 @@
 import React from "react";
-import TodoInput from "./TodoInput";
 
-function TodoHeader({ todos, addTodo }) {
+function TodoHeader({ todos }) {
   const today = new Date();
   const day = today.toLocaleDateString("en-US", { weekday: "long" });
   const date = today.toLocaleDateString("en-US", {
@@ -24,7 +23,6 @@ function TodoHeader({ todos, addTodo }) {
           <span className="progress-stats">{`${CompletedCount} / ${totalCount}`}</span>
         </div>
       </div>
-      <TodoInput addTodo={addTodo} />
     </div>
   );
 }

@@ -13,6 +13,7 @@ export function TodoProvider({ children }) {
     { id: 4, title: "Delete todo", isDone: false },
     { id: 5, title: "Edit todo", isDone: false },
   ]);
+  // const [todoValue, setTodoValue] = useState("");
 
   function addTodo(title) {
     setTodos((prev) => [
@@ -36,9 +37,15 @@ export function TodoProvider({ children }) {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   }
 
+  function editTodo(id, newText) {
+    setTodos((prev) =>
+      prev.map((todo) => (todo.id === id ? { ...todo, title: newText } : todo)),
+    );
+  }
+
   return (
     <TodoContext.Provider
-      value={{ todos, addTodo, toggleTodo, handleDeleteTodo }}
+      value={{ todos, addTodo, toggleTodo, handleDeleteTodo, editTodo }}
     >
       {children}
     </TodoContext.Provider>

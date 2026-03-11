@@ -24,9 +24,7 @@ export default function TodoInput({ addTodo }) {
         onChange={inputHandler}
       />
       <button className="add-button" onClick={addTodoHandler}>
-        <div className="button-icon">
-          <PlusCircleIcon size={32} weight="fill" />
-        </div>
+        <PlusCircleIcon size={32} weight="fill" />
       </button>
     </div>
   );
