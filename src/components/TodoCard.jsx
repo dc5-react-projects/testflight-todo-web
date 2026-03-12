@@ -15,6 +15,7 @@ function TodoCard({
   toggleEdit,
   handleDeleteTodo,
   editTodo,
+  setToggleEdit,
 }) {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -60,7 +61,13 @@ function TodoCard({
       <div className="todo-icon-container">
         <div className="todo-icon-wrapper">
           {toggleEdit && (
-            <div className="todo-card-icon" onClick={() => setIsEditing(true)}>
+            <div
+              className="todo-card-icon"
+              onClick={() => {
+                setIsEditing(true);
+                setToggleEdit(false);
+              }}
+            >
               <Icon path={mdiCircleEditOutline} size={1} />
             </div>
           )}

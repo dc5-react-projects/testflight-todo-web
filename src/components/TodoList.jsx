@@ -42,6 +42,7 @@ function TodoList({ todos, toggleTodo, handleDeleteTodo, editTodo, addTodo }) {
             toggleEdit={toggleEdit}
             handleDeleteTodo={handleDeleteTodo}
             editTodo={editTodo}
+            setToggleEdit={setToggleEdit}
           />
         ))}
       </div>
