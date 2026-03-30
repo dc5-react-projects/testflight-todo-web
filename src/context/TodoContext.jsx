@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useEffect, useState } from "react";
 
+// import { lightTheme, darkTheme } from "../utils/colors";
 // 1. Create Context
 export const TodoContext = createContext();
 
@@ -55,6 +56,8 @@ export function TodoProvider({ children }) {
       prev.map((todo) => (todo.id === id ? { ...todo, title: newText } : todo)),
     );
   }
+
+  // const theme = isDark ? darkTheme : lightTheme;
 
   return (
     <TodoContext.Provider

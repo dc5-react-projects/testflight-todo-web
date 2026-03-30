@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import TodoInput from "./TodoInput";
-
+import { SunIcon, MoonIcon } from "@phosphor-icons/react";
 function TodoHeader({ todos }) {
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem("theme");
+
+    if (saved) return saved === "dark";
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
+
+  useEffect(() => {
+    const theme = isDark ? "dark" : "light";
+
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [isDark]);
+
+  function toggleTheme() {
+    setIsDark((prev) => !prev);
+  }
+
   const today = new Date();
   const day = today.toLocaleDateString("en-US", { weekday: "long" });
   const date = today.toLocaleDateString("en-US", {
@@ -13,8 +33,12 @@ function TodoHeader({ todos }) {
   const totalCount = todos.length;
   const CompletedCount = todos.filter((todo) => todo.isDone).length;
   const progress = totalCount === 0 ? 0 : (CompletedCount / totalCount) * 100;
+
   return (
     <div>
+      <button className="theme-btn" onClick={toggleTheme}>
+        {isDark ? <SunIcon size={24} /> : <MoonIcon size={24} fill="#2f2f2c" />}
+      </button>
       <div className="header-container">
         <div className="header-date-day-wrapper">
           <p className="header-date">{date}</p>
@@ -44,7 +68,7 @@ function ProgressCircle({ progress }) {
         cx="60"
         cy="60"
         r={radius}
-        stroke="#1c263b"
+        stroke="#eda0ff"
         strokeWidth="8"
         fill="none"
       />
@@ -53,7 +77,7 @@ function ProgressCircle({ progress }) {
         cx="60"
         cy="60"
         r={radius}
-        stroke="#9c45b4"
+        stroke="#5a4fff"
         strokeWidth="8"
         fill="none"
         strokeDasharray={circumference}

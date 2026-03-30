@@ -1,19 +1,59 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  /* text-align: center; */
+:root {
+  /* LIGHT THEME */
+  --bg: #e9e6ea;
+  --card-bg: #f7f6fa;
+  --text: #2f2f2c;
+  --subtext: #6b6e76;
+  --primary: #232042;
+  --secondary: #eda0ff;
+  --accent: #5a4fff;
+  --accent10: #473cdba8;
+
+  --border: #8d85ff;
 }
 
+[data-theme="dark"] {
+  /* DARK THEME */
+  --bg: #1c1d1e;
+  --card-bg: #242426;
+  --text: #e9e6ea;
+  --subtext: #6b6e76;
+  --primary: #232042;
+  --accent: #473cdb;
+  --accent10: #473cdba8;
+  --border: #8d85ff;
+}
+
+#root {
+  /* max-width: 1280px; */
+  /* margin: 0; */
+  padding: 1rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+
+  margin: 0;
+  background: var(--bg);
+}
+
+.theme-btn {
+  height: 42px;
+  background-color: transparent;
+  border: none;
+}
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 720px;
-  width: 100%;
-  margin: auto;
-  padding: 24px;
-  gap: 24px;
+  /* padding: 24px; */
+  /* background-color: #b38686; */
+  /* width: 100%; */
 }
 
 /* TODO HEADER */
@@ -26,16 +66,18 @@
 }
 
 .header-date-day-wrapper {
-  padding: 14px;
+  padding: 8px;
 }
 
 .header-date {
-  color: rgb(169, 159, 146);
+  color: var(--subtext);
   font-weight: 200;
 }
 
 .header-day {
-  font-size: 26px;
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 400;
 }
 
 .header-progress {
@@ -48,9 +90,10 @@
   position: absolute;
   display: block;
   font-size: 22px;
+  color: var(--text);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   #root {
     padding: 1rem;
   }
@@ -67,11 +110,11 @@
   }
 
   .progress-stats {
-    font-size: 18px;
+    font-size: 24px;
   }
 }
 
-@media (max-width: 480px) {
+/* @media (min-width: 480px) {
   .container {
     padding: 12px;
     gap: 0px;
@@ -99,7 +142,7 @@
   .progress-stats {
     font-size: 16px;
   }
-}
+} */
 
 /* TODO INPUT  */
 
@@ -108,17 +151,19 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 16px;
   justify-content: center;
-  padding: 16px;
+  padding: 8px;
 }
 
 .input {
   flex: 1;
   padding: 14px;
   border-radius: 12px;
-  border: none;
+  border: 2px solid var(--border);
   /* margin: 0 12px; */
+  color: var(--text);
+  background-color: var(--bg);
 }
 
 .add-button {
@@ -126,7 +171,7 @@
   height: 52px;
   border-radius: 12px;
   border-style: none;
-  background-color: #232042;
+  background-color: var(--accent);
   cursor: pointer;
   transition: all ease-in-out 0.3s;
   display: flex;
@@ -141,10 +186,10 @@
 }
 
 .add-button:hover {
-  background-color: #36335f;
+  background-color: var(--accent10);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .input-container {
     justify-content: center;
     align-items: center;
@@ -154,7 +199,7 @@
 
   .input {
     /* width: 50%; */
-    height: 32px;
+    /* height: 32px; */
     padding: 12px;
   }
 
@@ -164,7 +209,7 @@
   }
 }
 
-@media (max-width: 400px) {
+/* @media (min-width: 400px) {
   .input-container {
     flex-direction: row;
     height: auto;
@@ -179,10 +224,10 @@
   }
 
   .add-button {
-    /* width: 100%; */
+    width: 100%;
     height: 44px;
   }
-}
+} */
 
 /* TODO LIST */
 
@@ -194,16 +239,18 @@
 
 .todo-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 24px 12px;
 }
 
 .todo-title {
-  /* font-size: 16px; */
+  font-size: 32px;
   font-weight: 700;
   flex: 1;
+  margin: -4px;
+  color: var(--accent);
   /* word-break: break-word; */
 }
 
@@ -213,14 +260,15 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  margin: 12px;
 }
 
 .todo-button-icon {
   display: flex;
 
-  min-width: 44px;
-  min-height: 44px;
-  background-color: #232042;
+  min-width: 48px;
+  min-height: 48px;
+  background-color: var(--accent);
   justify-content: center;
   align-items: center;
   border-radius: 12px;
@@ -229,10 +277,10 @@
 }
 
 .todo-button-icon:hover {
-  background-color: #36335f;
+  background-color: var(--accent10);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .todo-list {
     padding: 16px 8px;
   }
@@ -246,8 +294,8 @@
     height: 44px;
   }
 }
-
-@media (max-width: 480px) {
+/* 
+@media (min-width: 480px) {
   .todo-list {
     flex-direction: column;
     align-items: center;
@@ -261,24 +309,26 @@
     width: 100%;
     justify-content: center;
   }
-}
+} */
+
 /*  TODO CARD */
 
 .todo-card-container {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border-radius: 12px;
-  height: 56px;
+  height: 52px;
   padding: 12px 24px;
-  background-color: #1c263b;
-  box-shadow: 1px 1px 2px #9c45b4;
+  background-color: var(--card-bg);
+  box-shadow: 1px 1px 2px var(--border);
   margin-bottom: 12px;
   transition: all 0.3s ease-in;
 }
 
 .todo-card-container:hover {
-  background-color: #212d46;
-  box-shadow: 1px 0px 2px #833a98;
+  background-color: var(--card-bg);
+  box-shadow: 1px 0px 2px var(--accent10);
 }
 
 .todo-card {
@@ -288,6 +338,9 @@
   gap: 18px;
   /* border: solid 2px white; */
 }
+.card-title {
+  color: var(--text);
+}
 
 .todo-card-input {
   flex: 1;
@@ -295,6 +348,7 @@
   border-radius: 12px;
   border: none;
   padding: 12px;
+  background-color: var(--subtext);
 }
 .todo-card-input-container {
   display: flex;
@@ -311,14 +365,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #322f67;
+  background-color: var(--accent);
   border-radius: 12px;
   cursor: pointer;
   transition: all ease-out 0.3s;
 }
 
 .todo-card-icon:hover {
-  background-color: #4d4890;
+  background-color: var(--accent10);
 }
 
 .todo-icon-wrapper {
@@ -333,7 +387,7 @@
   align-items: center;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 600px) {
   .todo-card-container {
     padding: 10px 14px;
     height: auto;
@@ -358,7 +412,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 480px) {
   .todo-card-container {
     padding: 8px 16px;
   }

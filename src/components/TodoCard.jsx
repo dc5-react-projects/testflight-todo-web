@@ -31,7 +31,7 @@ function TodoCard({
           {todo.isDone ? (
             <CheckCircle
               size={32}
-              style={{ display: "block", color: "#9c45b4" }}
+              style={{ display: "block", color: "#eda0ff" }}
             />
           ) : (
             <Circle size={32} />
@@ -54,7 +54,7 @@ function TodoCard({
             </div>
           </div>
         ) : (
-          <p>{todo.title}</p>
+          <p className="card-title">{todo.title}</p>
         )}
       </div>
 
@@ -80,7 +80,7 @@ function TodoCard({
             >
               <XCircle
                 size={32}
-                style={{ display: "block", color: "#d490e6" }}
+                style={{ display: "block", color: "#eda0ff" }}
               />
             </div>
           )}
