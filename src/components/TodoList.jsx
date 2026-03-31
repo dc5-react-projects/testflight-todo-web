@@ -4,12 +4,11 @@ import Icon from "@mdi/react";
 import { mdiDeleteCircle } from "@mdi/js";
 import { mdiPlaylistEdit } from "@mdi/js";
 import TodoInput from "./TodoInput";
-import { ListIcon } from "@phosphor-icons/react";
 
 function TodoList({ todos, toggleTodo, handleDeleteTodo, editTodo, addTodo }) {
   const [toggleDelete, setToggleDelete] = useState(false);
   const [toggleEdit, setToggleEdit] = useState(false);
-  const [sortBy, setSortBy] = useState("active");
+  const [sortBy, setSortBy] = useState("all");
 
   let sortedTodos = todos;
   if (sortBy === "active") sortedTodos = todos.filter((todo) => !todo.isDone);
