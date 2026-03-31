@@ -29,14 +29,15 @@ export function TodoProvider({ children }) {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
+
   function addTodo(title) {
     setTodos((prev) => [
-      ...prev,
       {
         id: Math.random().toString(),
         title: title,
         isDone: false,
       },
+      ...prev,
     ]);
   }
 

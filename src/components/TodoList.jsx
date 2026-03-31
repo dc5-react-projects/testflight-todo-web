@@ -4,10 +4,20 @@ import Icon from "@mdi/react";
 import { mdiDeleteCircle } from "@mdi/js";
 import { mdiPlaylistEdit } from "@mdi/js";
 import TodoInput from "./TodoInput";
+import { ListIcon } from "@phosphor-icons/react";
 
 function TodoList({ todos, toggleTodo, handleDeleteTodo, editTodo, addTodo }) {
   const [toggleDelete, setToggleDelete] = useState(false);
   const [toggleEdit, setToggleEdit] = useState(false);
+  const [sortBy, setSortBy] = useState("active");
+
+  let sortedTodos = todos;
+  if (sortBy === "active") sortedTodos = todos.filter((todo) => !todo.isDone);
+
+  if (sortBy === "alphabetical")
+    sortedTodos = todos.slice().sort((a, b) => a.title.localeCompare(b.title));
+
+  if (sortBy === "completed") sortedTodos = todos.filter((todo) => todo.isDone);
 
   function handleToggleDelete() {
     setToggleDelete((prev) => !prev);
@@ -29,10 +39,26 @@ function TodoList({ todos, toggleTodo, handleDeleteTodo, editTodo, addTodo }) {
           <div className="todo-button-icon" onClick={handleToggleDelete}>
             <Icon path={mdiDeleteCircle} size={1.3} />
           </div>
+          {/* <div className="todo-button-icon">
+            <ListIcon size={32} />
+          </div> */}
+
+          <div className="todo-filter">
+            <select
+              className="custom-select"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+            >
+              <option value="all">All</option>
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
+              <option value="alphabetical">Alphabetical</option>
+            </select>
+          </div>
         </div>
       </div>
       <div>
-        {todos.map((todo, index) => (
+        {sortedTodos.map((todo, index) => (
           <TodoCard
             key={todo.id}
             index={index}

@@ -3,6 +3,7 @@ import {
   XCircle,
   Circle,
   CheckFatIcon,
+  CircleIcon,
 } from "@phosphor-icons/react";
 import Icon from "@mdi/react";
 import { mdiCircleEditOutline } from "@mdi/js";
@@ -31,10 +32,13 @@ function TodoCard({
           {todo.isDone ? (
             <CheckCircle
               size={32}
-              style={{ display: "block", color: "#eda0ff" }}
+              weight="fill"
+              // className="todo-card-icon-btn"
+              style={{ display: "block", color: "#5a4fff" }}
             />
           ) : (
-            <Circle size={32} />
+            <Circle size={32} className="todo-card-icon-btn" />
+            // <CircleIcon size={32} weight="duotone" />
           )}
         </div>
         {isEditing ? (
@@ -68,7 +72,12 @@ function TodoCard({
                 setToggleEdit(false);
               }}
             >
-              <Icon path={mdiCircleEditOutline} size={1} />
+              <Icon
+                path={mdiCircleEditOutline}
+                size={1.1}
+                // color={"#eda0ff"}
+                className="todo-card-icon-btn"
+              />
             </div>
           )}
           {toggleDelete && (
@@ -80,7 +89,8 @@ function TodoCard({
             >
               <XCircle
                 size={32}
-                style={{ display: "block", color: "#eda0ff" }}
+                className="todo-card-icon-btn"
+                // style={{ display: "block", color: "#eda0ff" }}
               />
             </div>
           )}
